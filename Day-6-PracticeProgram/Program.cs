@@ -6,28 +6,41 @@ using System.Threading;
 
 namespace Day_6_PracticeProgram
 {
-    class TemperatureConversion
+    class program
+{
+    public static void Main(string[] args)
     {
-        double celsius;
-        double fahrenheit;
-        static void Main (string[] args)
-        {
-            double celsius;
-            double fahrenheit;
-            Console.WriteLine("Enter value for celsius:");
-            celsius = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("Enter value for Fahrenheit:");
-            fahrenheit = Convert.ToDouble(Console.ReadLine());
-            double celToFah = (celsius * 9 / 5) + 32;
-            double fahToCel = (fahrenheit - 32) * 5 / 9;
-            Console.WriteLine("After celsius to fahrenheit conversion: {0}", celToFah);
-            Console.WriteLine("After fahrenheit to celsius conversion: {0}", fahToCel);
-
-        }
+        Input.MonthlyPayment();
+        Console.ReadLine();
 
     }
-    
 }
+    class Input
+    {
+        public static void MonthlyPayment()
+        {
+            Console.WriteLine("Enter principle");
+            double p = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter years");
+            int y = Convert.ToInt32(Console.ReadLine());
+
+            Console.WriteLine("Enter rate");
+            double R = Convert.ToInt32(Console.ReadLine());
+            int n = 12 * y;
+            double r = (R / (12 * 100));
+            double s = 1 + r;
+            double power = (double)Math.Pow(s, -n);
+            double payment = (p * r) / power;
+            Console.WriteLine("Monthly payment is :{0}", payment);
+        }
+
+
+
+
+    }
+}   
+
 
 
 
