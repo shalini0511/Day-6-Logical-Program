@@ -10,44 +10,39 @@ namespace Day_6_PracticeProgram
     {
         public static void Main(string[] args)
         {
-            NewtonSqrt.ReadInput();
+            DecimalToBinary.ReadInput();
             Console.ReadLine();
 
         }
     }
-    class NewtonSqrt
+    class DecimalToBinary
     {
         public static void ReadInput()
         {
             //Read input from user
-            Console.WriteLine("Enter value of c");
-            double c = Convert.ToDouble(Console.ReadLine());
-            NewtonSquareRoot(c);
+            Console.WriteLine("Enter decimal number");
+            int decimalNumber = Convert.ToInt32(Console.ReadLine());
+            DecimalToBinaryConversion(decimalNumber);
         }
 
 
-        private static void NewtonSquareRoot(double c)
+        private static void DecimalToBinaryConversion(int decimalNumber)
         {
-            //Given: local variables
-            double t = c;
-
-            //Given l= 1^-5 = 0.00001
-            double l = 0.00001;
-            double sqrtValue;
-
-            while (true)
+            //Local variable to iterate
+            int count;
+            //Store value of binary output
+            List<int> binaryNumber = new List<int>();
+            for (count = 0; decimalNumber > 0; count++)
             {
-                //Compute average of c/t and t
-                sqrtValue = 0.5 * (t + (c / t));
-                if (Math.Abs(sqrtValue - t) < l)
-                {
-                    break;
-                }
-                t = sqrtValue;
+                binaryNumber.Add(decimalNumber % 2);
+                decimalNumber = decimalNumber / 2;
             }
-            Console.WriteLine("Root Value is :" + Math.Round(sqrtValue, 4));
-
-
+            //Print BInary Representation
+            Console.Write("Binary Representation is =\t");
+            for (count = binaryNumber.Count - 1; count > 0; count--)
+            {
+                Console.Write(binaryNumber[count]);
+            }
         }
     }
 }   
