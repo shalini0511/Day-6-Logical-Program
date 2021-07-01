@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Diagnostics;
 using System.Threading;
 
@@ -8,20 +10,25 @@ namespace Day_6_PracticeProgram
     {
         static void Main(string[] args)
         {
-            //create new stopwatch
-            Stopwatch stopWatch = new Stopwatch();
-            //Begin Timimg
-            stopWatch.Start();
-            //do something
-            for (int i=0;i<1000;i++)
+            int couponStart, couponEnd;
+            //Get range for coupon from user
+            Console.WriteLine("Enter start range of coupon number");
+            couponStart = Convert.ToInt32(Console.ReadLine());
+            Console.WriteLine("Enter End range of coupon number");
+            couponEnd = Convert.ToInt32(Console.ReadLine());
+            Random random = new Random();
+            int randomNumber = random.Next(couponStart, couponEnd);
+            List<int> number = new List<int>();
+            number.Add(randomNumber);
+            List<int> distinct = number.Distinct().ToList();
+            foreach (int i in distinct)
             {
-                Thread.Sleep(1);
+                Console.WriteLine(" Distinct coupon nummber is :" + i);
             }
-            //stop timing
-            stopWatch.Stop();
-            //printing result
-            Console.WriteLine("Time Elapsed:{0}",stopWatch.Elapsed);
-            
         }
     }
 }
+
+
+
+          
